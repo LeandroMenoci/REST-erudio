@@ -1,0 +1,3 @@
+br\com\curso\unitTests\mapper\DozerConvertTest.class
+br\com\curso\unitTests\mapper\mocks\MockPerson.class
+br\com\curso\StartupTests.class

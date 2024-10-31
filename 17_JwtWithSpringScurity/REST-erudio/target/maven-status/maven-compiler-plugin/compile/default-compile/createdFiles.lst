@@ -1,0 +1,10 @@
+br\com\curso\data\vo\v1\PersonVO.class
+br\com\curso\controllers\PersonController.class
+br\com\curso\exceptions\handler\CustomizedResponseEntityExceptionHandler.class
+br\com\curso\Startup.class
+br\com\curso\exceptions\ExceptionResponse.class
+br\com\curso\exceptions\ResourceNotFoundException.class
+br\com\curso\services\PersonServices.class
+br\com\curso\model\Person.class
+br\com\curso\repositories\PersonRepository.class
+br\com\curso\mapper\DozerMapper.class

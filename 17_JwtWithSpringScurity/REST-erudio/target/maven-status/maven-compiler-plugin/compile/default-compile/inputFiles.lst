@@ -1,0 +1,10 @@
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\controllers\PersonController.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\data\vo\v1\PersonVO.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\exceptions\ExceptionResponse.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\exceptions\handler\CustomizedResponseEntityExceptionHandler.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\exceptions\ResourceNotFoundException.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\mapper\DozerMapper.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\model\Person.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\repositories\PersonRepository.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\services\PersonServices.java
+C:\Users\Leandro\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\REST-erudio\11_MigrationsWithFlyWay\REST-erudio\src\main\java\br\com\curso\Startup.java

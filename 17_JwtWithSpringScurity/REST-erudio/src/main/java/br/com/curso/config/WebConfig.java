@@ -12,44 +12,54 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.com.curso.serialization.converter.YamlJackson2HttpMessageConverter;
 
-@Configuration // Indica que esta classe é uma configuração do Spring
-public class WebConfig implements WebMvcConfigurer {
-    
-    // Define o tipo de mídia para arquivos YAML
-    private static final MediaType MEDIA_TYPE_APPLICATION_YML = MediaType.valueOf("application/x-yaml");
 
-    // Obtém a configuração de padrões de origem para CORS a partir do arquivo de propriedades
-    @Value("${cors.originPatterns:default}")
-    private String corsOriginPatterns = "";
+@Configuration
+public class WebConfig implements WebMvcConfigurer{
 
-    // Método que estende os conversores de mensagem para incluir o conversor YAML
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        // Adiciona o conversor personalizado para YAML à lista de conversores
-        converters.add(new YamlJackson2HttpMessageConverter());
-    }
+	private static final MediaType MEDIA_TYPE_APPLICATION_YML = MediaType.valueOf("application/x-yaml");
+	
+	@Value("${cors.originPatterns:default}")
+	private String corsOriginPatterns = "";
+	
+	@Override
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		converters.add(new YamlJackson2HttpMessageConverter());
+	}
 
-    // Configuração de CORS
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        // Divide as origens permitidas com base em vírgulas
-        var allowedOrigins = corsOriginPatterns.split(",");
-        registry.addMapping("/**") // Permite o mapeamento para todos os endpoints
-                .allowedMethods("*") // Permite todos os métodos HTTP
-                .allowedOrigins(allowedOrigins) // Define as origens permitidas
-                .allowCredentials(true); // Permite credenciais nas requisições
-    }
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		var allowedOrigins = corsOriginPatterns.split(",");
+		registry.addMapping("/**")
+			//.allowedMethods("GET", "POST", "PUT")
+			.allowedMethods("*")
+			.allowedOrigins(allowedOrigins)
+		.allowCredentials(true);
+	}
 
-    // Configuração de negociação de conteúdo
-    @Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        // Configuração para usar cabeçalhos para negociação de conteúdo
-        configurer.favorParameter(false) // Desativa a favor de parâmetros na URL
-            .ignoreAcceptHeader(false) // Não ignora o cabeçalho "Accept"
-            .useRegisteredExtensionsOnly(false) // Permite extensões não registradas
-            .defaultContentType(MediaType.APPLICATION_JSON) // Define o tipo de conteúdo padrão
-                .mediaType("json", MediaType.APPLICATION_JSON) // Define o tipo de mídia JSON
-                .mediaType("xml", MediaType.APPLICATION_XML) // Define o tipo de mídia XML
-                .mediaType("x-yaml", MEDIA_TYPE_APPLICATION_YML); // Define o tipo de mídia YAML
-    }
+	@Override
+	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+		// https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
+		// Via EXTENSION. http://localhost:8080/api/person/v1.xml DEPRECATED on SpringBoot 2.6
+		
+		// Via QUERY PARAM. http://localhost:8080/api/person/v1?mediaType=xml
+		/*
+		configurer.favorParameter(true)
+			.parameterName("mediaType").ignoreAcceptHeader(true)
+			.useRegisteredExtensionsOnly(false)
+			.defaultContentType(MediaType.APPLICATION_JSON)
+				.mediaType("json", MediaType.APPLICATION_JSON)
+				.mediaType("xml", MediaType.APPLICATION_XML);
+		*/
+		
+		// Via HEADER PARAM. http://localhost:8080/api/person/v1
+		
+		configurer.favorParameter(false)
+		.ignoreAcceptHeader(false)
+		.useRegisteredExtensionsOnly(false)
+		.defaultContentType(MediaType.APPLICATION_JSON)
+			.mediaType("json", MediaType.APPLICATION_JSON)
+			.mediaType("xml", MediaType.APPLICATION_XML)
+			.mediaType("x-yaml", MEDIA_TYPE_APPLICATION_YML)
+			;
+	}
 }

@@ -9,8 +9,7 @@ import br.com.curso.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
-    // Consulta personalizada para buscar um usuário pelo nome de usuário
-    @Query("SELECT u FROM User u WHERE u.userName = :userName") // Corrigido espaço antes de ":" para melhorar a legibilidade
-    User findByUserName(@Param("userName") String userName);
+	
+	@Query("SELECT u FROM User u WHERE u.userName =:userName")
+	User findByUsername(@Param("userName") String userName);
 }
